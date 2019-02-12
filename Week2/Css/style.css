@@ -68,7 +68,7 @@ input[type=button]{
 
 #item {
   width: 650px;
-  height: 35px;
+  height: 50px;
   margin-top: 10px;
   position: relative;
   margin-bottom: 10px;
@@ -84,4 +84,9 @@ input[type=button]{
     position: absolute;
     right: 0;
     bottom: 5px;
+}
+
+#item p {
+  display: inline-block;
+  font-size: 20px;
 }
