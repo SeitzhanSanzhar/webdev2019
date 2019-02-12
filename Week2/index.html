@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <link rel="stylesheet" href="css/style.css">
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div id="navwrapper">
+      <div id="navbar">
+        <h1 class="logowrapper">ToDo List</h1>
+      </div>
+    </div>
+    <div id="contentwrapper">
+        <div id="content">
+          <p class="enterance_text">ToDo List</p>
+          <div class = "add_new_task">
+            <input type="text" name="new_task" placeholder="New Task" id="add_text">
+            <input type="button" name="send" value = "Add" onclick="getTask()">
+          </div>
+          <div id = "show_tasks">
+          </div>
+        </div>
+    </div>
+    <script>
+      var todo = "";
+
+      if(localStorage.getItem('todos') != undefined && localStorage.getItem('todos') != null) {
+          document.getElementById("tasks").innerHTML = localStorage.getItem('todos');
+      }
+
+      function getTask() {
+
+        var value = document.getElementById('add_text').value;
+
+
+        var new_task = document.createElement('div');
+        var item_value = document.createElement('p');
+        item_value.innerHTML = value;
+        new_task.id = 'item';
+        var check_box = document.createElement('input');
+        check_box.type = 'checkbox';
+        check_box.onchange = done_item;
+        var img = document.createElement('img');
+        img.src = './img/trash.png';
+        img.onclick = delete_task;
+        new_task.appendChild(check_box);
+        new_task.appendChild(item_value);
+        new_task.appendChild(img);
+        show_tasks(new_task);
+        save_task(new_task);
+      }
+      function save_task(new_task) {
+        localStorage.setItem('todos',new_task.parentElement);
+      }
+      function show_tasks(task) {
+        document.getElementById("show_tasks").appendChild(task);
+        document.getElementById("add_text").value = "";
+      }
+      function done_item(item) {
+        var checkbox = item.target;
+        var value = checkbox.parentElement.childNodes[1];
+        if(checkbox.checked) value.style.textDecoration = 'line-through';
+        else value.style.textDecoration = 'none';
+      }
+      function delete_task(item) {
+        var img = item.target;
+        var value = img.parentElement;
+        var val_parent = value.parentElement;
+        //alert(value.innerHTML);
+        //alert(val_parent.innerHTML);
+        val_parent.removeChild(value);
+      }
+    </script>
+  </body>
+</html>
