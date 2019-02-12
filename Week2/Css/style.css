@@ -67,6 +67,8 @@ input[type=button]{
 }
 
 #item {
+  padding-left: 10px;
+  padding-bottom: 5px;
   width: 650px;
   height: 50px;
   margin-top: 10px;
@@ -81,12 +83,15 @@ input[type=button]{
 #item img {
     height: 25px;
     width: 25px;
+    padding-right: 10px;
+    padding-bottom: 7px;
     position: absolute;
     right: 0;
     bottom: 5px;
 }
 
 #item p {
+  padding-left: 10px;
   display: inline-block;
   font-size: 20px;
 }
