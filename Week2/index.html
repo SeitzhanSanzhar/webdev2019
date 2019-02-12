@@ -33,6 +33,10 @@
 
         var value = document.getElementById('add_text').value;
 
+        if(value == "") {
+          alert("input is not filled");
+          return;
+        }
 
         var new_task = document.createElement('div');
         var item_value = document.createElement('p');
