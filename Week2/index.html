@@ -25,8 +25,13 @@
     <script>
       var todo = "";
 
-      if(localStorage.getItem('todos') != undefined && localStorage.getItem('todos') != null) {
-          document.getElementById("tasks").innerHTML = localStorage.getItem('todos');
+      if(localStorage.getItem('todos') !== undefined && localStorage.getItem('todos') !== null) {
+          todo = localStorage.getItem('todos');
+          set_todo(todo);
+      }
+
+      function set_todo(todo) {
+        document.getElementById("show_tasks").innerHTML = todo;
       }
 
       function getTask() {
@@ -55,9 +60,10 @@
         save_task(new_task);
       }
       function save_task(new_task) {
-        localStorage.setItem('todos',new_task.parentElement);
+        localStorage.setItem('todos',new_task.parentElement.innerHTML);
       }
       function show_tasks(task) {
+
         document.getElementById("show_tasks").appendChild(task);
         document.getElementById("add_text").value = "";
       }
