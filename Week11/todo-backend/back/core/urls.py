@@ -1,10 +1,10 @@
-from django.urls import path
+from django.conf.urls import url
 
 from . import views
 
 urlpatterns = [
-    path('',views.index,name='index'),
-    path('task_lists/', views.task_lists),
-    path('task_lists/<int:id>', views.task_list_by_id),
-    path('task_lists/<int:id>/tasks', views.get_tasks_by_id),
+    url('',views.index,name='index'),
+    url('task_lists/', views.task_lists),
+    url('task_lists/<int:id>', views.task_list_by_id),
+    url('task_lists/<int:id>/tasks', views.get_tasks_by_id),
 ]
